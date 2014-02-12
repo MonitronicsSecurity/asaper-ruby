@@ -1,12 +1,37 @@
 module Asaper
-  class Client
-    def initialize
-      @hash = Hash.new
+  class TaskBuilder
+    attr_reader :task
+    def initialize(type, &block)
+      @task = { type: type }
+      instance_eval(&block)
     end
 
-    def room(&block)
+    def message(message)
+      @task[:options] ||= {}
+      @task[:options].merge!(message: message)
+    end
+  end
+
+  class DuressBuilder
+    attr_reader :duress
+
+    def initialize(code, &block)
+      @duress = { code: code }
       instance_eval(&block)
-      @hash
+    end
+
+    def task(type, &block)
+      @duress[:tasks] = []
+      @duress[:tasks] << TaskBuilder.new(type, &block).task
+    end
+  end
+
+  class RoomBuilder
+    attr_reader :room
+
+    def initialize(&block)
+      @room = Hash.new
+      instance_eval(&block)
     end
 
     def logo_url(url)
@@ -25,10 +50,20 @@ module Asaper
       new_attribute(:message, content: content)
     end
 
+    def duress(code, &block)
+      @room[:duress] = DuressBuilder.new(code, &block).duress
+    end
+
     private
     def new_attribute(attribute, value)
-      @hash[attribute] ||= {}
-      @hash[attribute].merge!(value)
+      @room[attribute] ||= {}
+      @room[attribute].merge!(value)
+    end
+  end
+
+  class Client
+    def room(&block)
+      RoomBuilder.new(&block).room
     end
   end
 end
