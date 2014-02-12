@@ -10,15 +10,12 @@ describe Asaper::Client do
 
   it "converts room message" do
     room_hash = subject.room do
-      logo_url "url"
-      title "Bulglary"
+      title "Bulgary"
       subtitle "620 Davis st"
       content "Front door opened while device was armed."
     end
 
-    expect(room_hash).to eq({ options: { 
-        logo_url: "url"
-      },
+    expect(room_hash).to eq({
       message: {
         title: "Bulgary",
         subtitle: "620 Davis st",

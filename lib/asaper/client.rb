@@ -10,22 +10,23 @@ module Asaper
     end
 
     def logo_url(url)
+      @hash[:options] ||= {}
       @hash[:options] = { logo_url: url }
     end
 
     def title(title)
-      @hash.merge!(message: { title: title })
-      p @hash
+      @hash[:message] ||= {}
+      @hash[:message].merge!(title: title)
     end
 
     def subtitle(subtitle)
-      @hash.merge!(message: { subtitle: subtitle })
-      p @hash
+      @hash[:message] ||= {}
+      @hash[:message].merge!(subtitle: subtitle)
     end
 
     def content(content)
-      @hash.merge!(message: { content: content })
-      p @hash
+      @hash[:message] ||= {}
+      @hash[:message].merge!(content: content)
     end
   end
 end
