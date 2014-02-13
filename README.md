@@ -6,8 +6,13 @@ Set the api key
 ```ruby
   Asaper.configure do |config|
     config.api_key = API_KEY
+    config.api_env = ENV
   end
 ```
+
+ENV = ```:staging, :sandbox, :production```
+
+To create a room:
 
 ```ruby
 room do
