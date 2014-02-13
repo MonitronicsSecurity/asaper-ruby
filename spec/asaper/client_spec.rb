@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'asaper/client'
+
 describe Asaper::Client do
   it "converts room options" do
     room_hash = subject.room do

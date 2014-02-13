@@ -1,5 +1,5 @@
-require_relative 'asaper/client'
 require_relative 'asaper/configuration'
+autoload :Client, 'asaper/client'
 
 module Asaper
   def self.configure
