@@ -12,16 +12,12 @@ module Asaper
         instance_eval(&block)
       end
 
-      def button_color(color)
-        new_attribute(:options, button_color: color)
-      end
-
-      def text_color(color)
-        new_attribute(:options, text_color: color)
-      end
-
       def confirmation(&block)
-        new_attribute(:confirmation, Builders::Confirmation.new(&block).hash)
+        new_attribute(:options, confirmation: Builders::Confirmation.new(&block).hash)
+      end
+
+      def method_missing(name, *args, &block)
+        new_attribute(:options, name.to_sym => args.first)
       end
     end
   end

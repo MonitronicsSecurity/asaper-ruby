@@ -25,6 +25,10 @@ module Asaper
         new_array_attribute(:passwords, passwords)
       end
 
+      def password(password)
+        new_attribute(:password, password)
+      end
+
       def password_label(text)
         new_attribute(:password_label, text)
       end

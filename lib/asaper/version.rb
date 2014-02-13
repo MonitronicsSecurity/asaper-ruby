@@ -1,1 +1,3 @@
-Asaper::VERSION = '0.0.1'
+module Asaper
+  VERSION = '0.0.1'
+end

@@ -15,7 +15,7 @@ ENV = ```:staging, :sandbox, :production```
 To create a room:
 
 ```ruby
-room do
+Asaper.room do
   logo_url "url"
   title "title Bulglary"
   subtitle "subtitle 620 Davis"

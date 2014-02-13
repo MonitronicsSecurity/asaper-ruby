@@ -112,7 +112,7 @@ describe Asaper::Builders::Room do
               message "Can you verify this as a false alarm?"
               ok_button_text "Verify"
               cancel_button_text "Cancel"
-              passwords "1234", "1235"
+              password "1234"
               password_label "System Code"
 
               knock_in "30" do
@@ -132,7 +132,26 @@ describe Asaper::Builders::Room do
               name: "false",
               options: {
                 button_color: "#fff",
-                text_color: "#ccc"
+                text_color: "#ccc",
+                confirmation: {
+                  message:"Can you verify this as a false alarm?",
+                  ok_button_text: "Verify",
+                  cancel_button_text: "Cancel",
+                  password: "1234",
+                  password_label: "System Code",
+
+                  knock: {
+                    run_in: "30",
+                    tasks: [
+                      {
+                        type: "message_all",
+                        options: {
+                          message: "Activated knock"
+                        }
+                      }
+                    ]
+                  }
+                }
               },
               tasks: [
                 {
@@ -141,27 +160,7 @@ describe Asaper::Builders::Room do
                     message: "[actor_name] verified this as a false alarm"
                   }
                 }
-              ],
-
-                confirmation: {
-                message:"Can you verify this as a false alarm?",
-                ok_button_text: "Verify",
-                cancel_button_text: "Cancel",
-                passwords: ["1234", "1235"],
-                password_label: "System Code",
-
-                knock: {
-                  run_in: "30",
-                  tasks: [
-                    {
-                      type: "message_all",
-                      options: {
-                        message: "Activated knock"
-                      }
-                    }
-                  ]
-                }
-              }
+              ]
             }
           ]
         }
