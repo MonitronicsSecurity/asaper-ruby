@@ -27,9 +27,9 @@ room do
     text_color "hey there"
     
     confirmation do
-      message "Can you verify this as a false alarm?",
-      ok_button_text "Verify",
-      cancel_button_text "Cancel",
+      message "Can you verify this as a false alarm?"
+      ok_button_text "Verify"
+      cancel_button_text "Cancel"
       passwords "1234", "1235"
       password_label "System Code"
       
