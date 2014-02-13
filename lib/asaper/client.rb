@@ -4,7 +4,8 @@ require 'asaper/api/wrapper'
 module Asaper
   class Client
     def room(&block)
-      Builders::Room.new(&block).hash
+      room_params = Builders::Room.new(&block).hash
+      Asaper::Api::Wrapper.create_room(room_params)
     end
   end
 end

@@ -1,4 +1,5 @@
 require 'httparty'
+require 'active_support/hash_with_indifferent_access'
 
 module Asaper
   module Api
@@ -8,7 +9,7 @@ module Asaper
       base_uri Asaper.configuration.api_url
 
       def self.create_room(room_args)
-        post(url("/rooms"), query: room_args)
+        ActiveSupport::HashWithIndifferentAccess.new(post(url("/rooms"), query: room_args))
       end
 
       private
