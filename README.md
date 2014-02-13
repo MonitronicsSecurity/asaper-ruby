@@ -1,6 +1,14 @@
 asaper-ruby
 ===========
 
+Set the api key
+
+```ruby
+  Asaper.configure do |config|
+    config.api_key = API_KEY
+  end
+```
+
 ```ruby
 room do
   logo_url "url"
