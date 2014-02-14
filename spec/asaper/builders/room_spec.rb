@@ -22,6 +22,7 @@ describe Asaper::Builders::Room do
           r.title "Bulgary"
           r.subtitle "620 Davis st"
           r.content "Front door opened while device was armed."
+          r.icon "icon.png"
         end
       end
 
@@ -31,7 +32,8 @@ describe Asaper::Builders::Room do
             title: "Bulgary",
             subtitle: "620 Davis st",
             content: "Front door opened while device was armed."
-          }
+          },
+          icon: "icon.png"
         }
       end
     end

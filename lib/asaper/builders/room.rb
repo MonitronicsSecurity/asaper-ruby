@@ -29,6 +29,10 @@ module Asaper
         new_attribute(:message, content: content)
       end
 
+      def icon(url)
+        new_attribute(:icon, url)
+      end
+
       def duress(code, &block)
         new_attribute(:duress, Builders::Duress.new(code, &block).hash)
       end
