@@ -6,9 +6,9 @@ module Asaper
     class Duress < Asaper::Builders::Base
       include Concerns::Taskable
 
-      def initialize(code, &block)
+      def initialize(code)
         @hash = { code: code }
-        instance_eval(&block)
+        yield self
       end
     end
   end

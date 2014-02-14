@@ -7,9 +7,9 @@ module Asaper
     class Action < Asaper::Builders::Base
       include Concerns::Taskable
 
-      def initialize(name, &block)
+      def initialize(name)
         @hash = { name: name }
-        instance_eval(&block)
+        yield self
       end
 
       def confirmation(&block)

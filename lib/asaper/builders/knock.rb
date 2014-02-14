@@ -9,7 +9,7 @@ module Asaper
 
       def initialize(run_in, &block)
         @hash = { run_in: run_in }
-        instance_eval(&block)
+        yield self
       end
     end
   end

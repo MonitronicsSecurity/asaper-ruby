@@ -6,7 +6,7 @@ module Asaper
     class Confirmation < Asaper::Builders::Base
       def initialize(&block)
         @hash = Hash.new
-        instance_eval(&block)
+        yield self
       end
 
       def message(message)

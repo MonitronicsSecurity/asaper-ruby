@@ -8,9 +8,9 @@ module Asaper
     class Room < Asaper::Builders::Base
       include Concerns::Taskable
 
-      def initialize(&block)
+      def initialize
         @hash = Hash.new
-        instance_eval(&block)
+        yield self
       end
 
       def logo_url(url)

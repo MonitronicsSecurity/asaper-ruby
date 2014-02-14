@@ -10,7 +10,7 @@ describe Asaper::Builders::Room do
 
   context "room options" do
     it_behaves_like "Room Hash" do
-      let(:block) { proc{ logo_url "url" } }
+      let(:block) { proc{ |r| r.logo_url "url" } }
       let(:hash) { { options: { logo_url: "url" } } }
     end
   end
@@ -18,10 +18,10 @@ describe Asaper::Builders::Room do
   context "room message" do
     it_behaves_like "Room Hash" do
       let(:block) do
-        proc do
-          title "Bulgary"
-          subtitle "620 Davis st"
-          content "Front door opened while device was armed."
+        proc do |r|
+          r.title "Bulgary"
+          r.subtitle "620 Davis st"
+          r.content "Front door opened while device was armed."
         end
       end
 
@@ -40,10 +40,10 @@ describe Asaper::Builders::Room do
   context "converts the duress" do
     it_behaves_like "Room Hash" do
       let(:block) do
-        proc do
-          duress "code" do
-            task "message_all" do
-              message "[actor_name] verified this as a false alarm"
+        proc do |r|
+          r.duress "code" do |d|
+            d.task "message_all" do |t|
+              t.message "[actor_name] verified this as a false alarm"
             end
           end
         end
@@ -71,9 +71,9 @@ describe Asaper::Builders::Room do
   context "members" do
     it_behaves_like "Room Hash" do
       let(:block) do
-        proc do
-          member "Member 1", "1234", "test@email.com"
-          member "Member 2", "", "test_2@email.com", "4785584433"
+        proc do |r|
+          r.member "Member 1", "1234", "test@email.com"
+          r.member "Member 2", "", "test_2@email.com", "4785584433"
         end
       end
 
@@ -99,25 +99,25 @@ describe Asaper::Builders::Room do
   context "actions" do
     it_behaves_like "Room Hash" do
       let(:block) do
-        proc do
-          action "false" do
-            button_color "#fff"
-            text_color "#ccc"
+        proc do |r|
+          r.action "false" do |a|
+            a.button_color "#fff"
+            a.text_color "#ccc"
 
-            task "message_all" do
-              message "[actor_name] verified this as a false alarm"
+            a.task "message_all" do |t|
+              t.message "[actor_name] verified this as a false alarm"
             end
 
-            confirmation do
-              message "Can you verify this as a false alarm?"
-              ok_button_text "Verify"
-              cancel_button_text "Cancel"
-              password "1234"
-              password_label "System Code"
+            a.confirmation do |c|
+              c.message "Can you verify this as a false alarm?"
+              c.ok_button_text "Verify"
+              c.cancel_button_text "Cancel"
+              c.password "1234"
+              c.password_label "System Code"
 
-              knock_in "30" do
-                task "message_all" do
-                  message "Activated knock"
+              c.knock_in "30" do |k|
+                k.task "message_all" do |t|
+                  t.message "Activated knock"
                 end
               end
             end

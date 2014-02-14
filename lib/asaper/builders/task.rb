@@ -5,7 +5,7 @@ module Asaper
     class Task < Asaper::Builders::Base
       def initialize(type, &block)
         @hash = { type: type }
-        instance_eval(&block)
+        yield self
       end
 
       def method_missing(name, *args, &block)
