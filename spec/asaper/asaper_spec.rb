@@ -19,30 +19,23 @@ end
 
 describe Asaper, ".room" do
   let(:block) { proc{ } }
-  let(:room_hash) { Hash.new }
-  let(:builder) { double(:builder, hash: room_hash) }
   let(:wrapper) { double(:wrapper, create_room: true) }
 
   before do
-    allow(Asaper::Builders::Room).to receive(:new) { builder }
     allow(Asaper::Api::Wrapper).to receive(:new) { wrapper }
   end
 
-  after { subject.room(&block) }
-
-  it "creates a new room builder" do
-    expect(Asaper::Builders::Room).to receive(:new).with(&block)
+  context "when it has a token" do
+    it "calls ExistingRoom Handler" do
+      expect(Asaper::Handlers::ExistingRoom).to receive(:new).with(A_ROOM_TOKEN, wrapper, &block)
+      subject.room(A_ROOM_TOKEN, &block)
+    end
   end
 
-  it "gets the hash" do
-    expect(builder).to receive(:hash)
-  end
-
-  it "creates the api wrapper" do
-    expect(Asaper::Api::Wrapper).to receive(:new).with(Asaper.configuration)
-  end
-
-  it "creates the room" do
-    expect(wrapper).to receive(:create_room).with(room_hash)
+  context "when it does not have a token" do
+    it "calls NewRoom Handler" do
+      expect(Asaper::Handlers::NewRoom).to receive(:new).with(wrapper, &block)
+      subject.room(&block)
+    end
   end
 end

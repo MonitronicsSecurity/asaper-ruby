@@ -1,7 +1,7 @@
 require_relative 'asaper/configuration'
-require 'asaper/builders/room'
+require 'asaper/handlers/new_room'
+require 'asaper/handlers/existing_room'
 require 'asaper/api/wrapper'
-require 'awesome_print'
 
 module Asaper
   def self.configure
@@ -12,10 +12,12 @@ module Asaper
     @configuration ||= Configuration.new
   end
 
-  def self.room(&block)
-    room_params = Asaper::Builders::Room.new(&block).hash
-    ap room_params
-    api_wrapper.create_room(room_params)
+  def self.room(token = nil, &block)
+    if token
+      Asaper::Handlers::ExistingRoom.new(token, api_wrapper, &block)
+    else
+      Asaper::Handlers::NewRoom.new(api_wrapper, &block)
+    end
   end
 
   def self.api_wrapper
