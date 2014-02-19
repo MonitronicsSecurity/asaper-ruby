@@ -29,6 +29,10 @@ module Asaper
         new_attribute(:message, content: content)
       end
 
+      def details(details)
+        new_attribute(:message, details: details)
+      end
+
       def icon(url)
         new_attribute(:icon, url)
       end

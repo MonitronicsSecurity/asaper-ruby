@@ -16,7 +16,7 @@ module Asaper
     if token
       Asaper::Handlers::ExistingRoom.new(token, api_wrapper, &block)
     else
-      Asaper::Handlers::NewRoom.new(api_wrapper, &block)
+      Asaper::Handlers::NewRoom.new(api_wrapper, &block).hash
     end
   end
 
