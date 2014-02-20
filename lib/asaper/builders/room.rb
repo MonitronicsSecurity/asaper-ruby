@@ -1,6 +1,7 @@
 require 'asaper/builders/base'
 require 'asaper/builders/duress'
 require 'asaper/builders/action'
+require 'asaper/builders/member'
 require 'asaper/builders/concerns/taskable'
 
 module Asaper
@@ -41,8 +42,8 @@ module Asaper
         new_attribute(:duress, Builders::Duress.new(code, &block).hash)
       end
 
-      def member(name, pin, *contact_methods)
-        new_array_attribute(:members, name: name, pin: pin, contact_methods: contact_methods)
+      def member(&block)
+        new_array_attribute(:members, Builders::Member.new(&block).hash)
       end
 
       def action(name, &block)

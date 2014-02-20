@@ -74,8 +74,16 @@ describe Asaper::Builders::Room do
     it_behaves_like "Room Hash" do
       let(:block) do
         proc do |r|
-          r.member "Member 1", "1234", "test@email.com"
-          r.member "Member 2", "", "test_2@email.com", "4785584433"
+          r.member do |m|
+            m.name "Member 1"
+            m.pin "1234"
+            m.contact_methods "test@email.com"
+          end
+
+          r.member do |m|
+            m.name "Member 2"
+            m.contact_methods "test_2@email.com", "4785584433"
+          end
         end
       end
 
@@ -89,7 +97,6 @@ describe Asaper::Builders::Room do
             },
             {
               name: "Member 2",
-              pin: "",
               contact_methods: [ "test_2@email.com", "4785584433" ]
             }
           ]
