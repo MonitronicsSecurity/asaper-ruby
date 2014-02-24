@@ -22,9 +22,11 @@ describe "Full Spec" do
         end
       end
 
-      r.member "Jose Andres", "1234", "jalvarez@pernix.cr"
-      r.member "Esteban Soto", "123456", "esoto@pernix.cr"
-      r.member "Cesar Navarro", "12345", "cnavarro@pernix.cr"
+      r.member do |m|
+        m.name "Jose Andres"
+        m.pin "1234"
+        m.contact_methods "jalvarez@pernix.cr"
+      end
 
       r.action "false" do |a|
         a.button_color "#00cb38"
@@ -40,7 +42,7 @@ describe "Full Spec" do
           c.message "Can you verify this as a false alarm?"
           c.ok_button_text "Verify"
           c.cancel_button_text "Cancel"
-          c.password "1234"
+          c.passwords "1234"
           c.password_label "System Code"
 
           c.knock_in "30" do |k|
