@@ -15,6 +15,26 @@ describe Asaper::Builders::Room do
     end
   end
 
+  context "room properties" do
+    it_behaves_like "Room Hash" do
+      let(:block) do
+        proc do |r|
+          r.property "employee_xid", "12345abcd"
+          r.property "account_number", "98765ncjd"
+        end
+      end
+
+      let(:hash) do
+        {
+          properties: [
+            { key: "employee_xid", value: "12345abcd" },
+            { key: "account_number", value: "98765ncjd" }
+          ]
+        }
+      end
+    end
+  end
+
   context "room message" do
     it_behaves_like "Room Hash" do
       let(:block) do

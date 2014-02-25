@@ -34,6 +34,10 @@ module Asaper
         new_attribute(:message, details: details)
       end
 
+      def property(key, value)
+        new_array_attribute(:properties, key: key, value: value)
+      end
+
       def icon(url)
         new_attribute(:icon, url)
       end
