@@ -16,6 +16,10 @@ module Asaper
       def resolve(message)
         @api_wrapper.resolve_room(@token, message: message)
       end
+
+      def account_info
+        @api_wrapper.account_info(@token)
+      end
     end
   end
 end
