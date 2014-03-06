@@ -1,15 +1,14 @@
 require 'asaper/builders/base'
+require 'asaper/builders/concerns/optionable'
 
 module Asaper
   module Builders
     class Task < Asaper::Builders::Base
+      include Concerns::Optionable
+
       def initialize(type, &block)
         @hash = { type: type }
         yield self
-      end
-
-      def method_missing(name, *args, &block)
-        new_attribute(:options, name.to_sym => args.first)
       end
     end
   end

@@ -144,6 +144,12 @@ describe Asaper::Builders::Room do
               c.password "1234"
               c.password_label "System Code"
 
+              c.help_modal do |modal|
+                modal.link_text "Link text"
+                modal.phone_number "7575751828"
+                modal.modal_text "Modal text"
+              end
+
               c.knock_in "30" do |k|
                 k.task "message_all" do |t|
                   t.message "Activated knock"
@@ -168,6 +174,14 @@ describe Asaper::Builders::Room do
                   cancel_button_text: "Cancel",
                   password: "1234",
                   password_label: "System Code",
+
+                  options: {
+                    help_modal: {
+                      link_text: "Link text",
+                      phone_number: "7575751828",
+                      modal_text: "Modal text"
+                    }
+                  },
 
                   knock: {
                     run_in: "30",

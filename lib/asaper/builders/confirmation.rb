@@ -1,9 +1,12 @@
 require 'asaper/builders/base'
 require 'asaper/builders/knock'
+require 'asaper/builders/concerns/optionable'
 
 module Asaper
   module Builders
     class Confirmation < Asaper::Builders::Base
+      include Concerns::Optionable
+
       def initialize(&block)
         @hash = Hash.new
         yield self
