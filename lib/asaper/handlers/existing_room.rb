@@ -13,6 +13,11 @@ module Asaper
         @api_wrapper.new_message(@token, message_args)
       end
 
+      def member_message(message, member_token)
+        message_args = { message: { content: message }, member_token: member_token }
+        @api_wrapper.new_member_message(@token, message_args)
+      end
+
       def resolve(message)
         @api_wrapper.resolve_room(@token, message: message)
       end

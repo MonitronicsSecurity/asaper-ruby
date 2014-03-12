@@ -13,6 +13,18 @@ describe Asaper::Handlers::ExistingRoom, "#message" do
   end
 end
 
+describe Asaper::Handlers::ExistingRoom, "#member_message" do
+  let(:api_wrapper) { double(:api_wrapper) }
+
+  it "tells api wrapper to send a new member message" do
+    message = "We are trying to contact a member from the call list"
+    expect(api_wrapper).to receive(:new_member_message).with(A_ROOM_TOKEN, message: { content: message }, member_token: A_MEMBER_TOKEN )
+    described_class.new(A_ROOM_TOKEN, api_wrapper) do |room|
+      room.member_message message, A_MEMBER_TOKEN
+    end
+  end
+end
+
 describe Asaper::Handlers::ExistingRoom, "#resolve" do
   let(:api_wrapper) { double(:api_wrapper) }
 

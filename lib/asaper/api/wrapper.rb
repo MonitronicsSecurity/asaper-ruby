@@ -18,6 +18,10 @@ module Asaper
         self.class.post(url("/rooms/#{room_token}/alarm_messages"), query: message_args)
       end
 
+      def new_member_message(room_token, message_args)
+        self.class.post(url("/rooms/#{room_token}/messages"), query: message_args)
+      end
+
       def account_info(room_token)
         self.class.get(url("/rooms/#{room_token}/account_info"))
       end
