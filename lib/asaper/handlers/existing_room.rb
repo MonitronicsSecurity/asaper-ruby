@@ -14,7 +14,7 @@ module Asaper
       end
 
       def member_message(message, member_token)
-        message_args = { message: { content: message }, member_token: member_token }
+        message_args = { content: message, member_token: member_token }
         @api_wrapper.new_member_message(@token, message_args)
       end
 
