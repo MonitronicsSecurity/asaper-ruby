@@ -18,6 +18,11 @@ module Asaper
         @api_wrapper.new_member_message(@token, message_args)
       end
 
+      def activate_member(member_id)
+        args = { channel: "presence-#{@token}", user_id: member_id}
+        @api_wrapper.activate_member(args)
+      end
+
       def resolve(message)
         @api_wrapper.resolve_room(@token, message: message)
       end

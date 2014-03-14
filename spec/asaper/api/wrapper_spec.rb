@@ -34,6 +34,17 @@ describe Asaper::Api::Wrapper, ".new_member_message" do
   end
 end
 
+describe Asaper::Api::Wrapper, ".activate_member" do
+  let(:config) { double(:config, api_url: API_URL, api_key: API_KEY) }
+  subject { described_class.new(config) }
+
+  it "posts to /rooms/alarm_messages with the given args" do
+    args = {}
+    expect(described_class).to receive(:post).with("#{API_URL}/pusher/webhook?API-KEY=#{API_KEY}", query: args) { {} }
+    subject.activate_member args
+  end
+end
+
 describe Asaper::Api::Wrapper, ".account_info" do
   let(:config) { double(:config, api_url: API_URL, api_key: API_KEY) }
   subject { described_class.new(config) }

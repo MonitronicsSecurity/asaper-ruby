@@ -25,6 +25,17 @@ describe Asaper::Handlers::ExistingRoom, "#member_message" do
   end
 end
 
+describe Asaper::Handlers::ExistingRoom, "#activate_member" do
+  let(:api_wrapper) { double(:api_wrapper) }
+
+  it "tells api wrapper to send a new member message" do
+    expect(api_wrapper).to receive(:activate_member).with({:channel=>"presence-#{A_ROOM_TOKEN}", :user_id=>A_MEMBER_ID})
+    described_class.new(A_ROOM_TOKEN, api_wrapper) do |room|
+      room.activate_member A_MEMBER_ID
+    end
+  end
+end
+
 describe Asaper::Handlers::ExistingRoom, "#resolve" do
   let(:api_wrapper) { double(:api_wrapper) }
 
