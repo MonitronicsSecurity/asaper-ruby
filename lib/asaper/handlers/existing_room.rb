@@ -19,7 +19,12 @@ module Asaper
       end
 
       def activate_member(member_id)
-        args = { channel: "presence-#{@token}", user_id: member_id}
+        args = { events: [{ channel: "presence-#{@token}", user_id: member_id, name: "member_added" }] }
+        @api_wrapper.activate_member(args)
+      end
+
+      def deactivate_member(member_id)
+        args = { events: [{ channel: "presence-#{@token}", user_id: member_id, name: "member_removed" }] }
         @api_wrapper.activate_member(args)
       end
 
