@@ -8,6 +8,13 @@ describe "Full Spec" do
     end
   end
 
+  it "activates the members" do
+    pending "Running this test will activate a member, be careful"
+    Asaper.room("mP03YuYMasbiDMAdDAdvhQ") do |room|
+      room.activate_member 1740
+    end
+  end
+
   it "sends the test" do
     pending "Running this test will send and ASAP, be careful"
     Asaper.room do |r|
