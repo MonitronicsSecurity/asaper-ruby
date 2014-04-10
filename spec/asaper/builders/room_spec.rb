@@ -98,6 +98,7 @@ describe Asaper::Builders::Room do
             m.name "Member 1"
             m.pin "1234"
             m.contact_methods "test@email.com"
+            m.owner true
           end
 
           r.member do |m|
@@ -113,7 +114,8 @@ describe Asaper::Builders::Room do
             {
               name: "Member 1",
               pin: "1234",
-              contact_methods: [ "test@email.com" ]
+              contact_methods: [ "test@email.com" ],
+              owner: true
             },
             {
               name: "Member 2",

@@ -30,9 +30,10 @@ describe "Full Spec" do
       end
 
       r.member do |m|
-        m.name "Jose Andres"
+        m.name "Cesar Navarro"
         m.pin "1234"
-        m.contact_methods "jalvarez@pernix.cr"
+        m.contact_methods "cnavarro@pernix.cr"
+        m.owner true
       end
 
       r.action "false" do |a|
