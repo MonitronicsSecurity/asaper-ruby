@@ -23,6 +23,11 @@ module Asaper
       def xid(xid)
         new_attribute(:xid, xid)
       end
+
+      def owner(owner)
+        new_attribute(:owner, owner)
+      end
     end
   end
 end
+
