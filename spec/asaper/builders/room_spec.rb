@@ -51,9 +51,9 @@ describe Asaper::Builders::Room do
           message: {
             title: "Bulgary",
             subtitle: "620 Davis st",
-            content: "Front door opened while device was armed."
-          },
-          icon: "icon.png"
+            content: "Front door opened while device was armed.",
+            icon: "icon.png"
+          }
         }
       end
     end

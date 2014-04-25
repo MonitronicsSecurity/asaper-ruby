@@ -38,8 +38,8 @@ module Asaper
         new_array_attribute(:properties, key: key, value: value)
       end
 
-      def icon(url)
-        new_attribute(:icon, url)
+      def icon(icon)
+        new_attribute(:message, icon: icon)
       end
 
       def duress(code, &block)
