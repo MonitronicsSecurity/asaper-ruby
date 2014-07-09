@@ -27,6 +27,10 @@ module Asaper
       def owner(owner)
         new_attribute(:owner, owner)
       end
+
+      def groups(*groups)
+        new_array_attribute(:groups, groups)
+      end
     end
   end
 end
