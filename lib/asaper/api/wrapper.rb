@@ -4,6 +4,7 @@ module Asaper
   module Api
     class Wrapper
       include HTTParty
+      default_options.update(verify: false)
 
       headers 'Content-Type' => 'application/json'
 

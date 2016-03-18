@@ -8,15 +8,15 @@ describe "Full Spec" do
     end
   end
 
-  it "activates the members" do
-    pending "Running this test will activate a member, be careful"
+  # "Running this test will activate a member, be careful"
+  xit "activates the members" do
     Asaper.room("mP03YuYMasbiDMAdDAdvhQ") do |room|
       room.activate_member 1740
     end
   end
 
-  it "sends the test" do
-    pending "Running this test will send and ASAP, be careful"
+  # "Running this test will send and ASAP, be careful"
+  xit "sends the test" do
     Asaper.room do |r|
       r.logo_url "http://pernix-solutions.com/images/logo-3.png"
       r.title "Testing asaper"

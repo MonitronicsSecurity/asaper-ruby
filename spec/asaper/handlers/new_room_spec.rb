@@ -11,7 +11,7 @@ describe Asaper::Handlers::NewRoom, ".initialize" do
   after { described_class.new(wrapper, &block) }
 
   it "creates a new room builder" do
-    expect(Asaper::Builders::Room).to receive(:new).with(&block)
+    expect(Asaper::Builders::Room).to receive(:new)
   end
 
   it "gets the hash" do
